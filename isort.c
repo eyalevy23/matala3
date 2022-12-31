@@ -42,7 +42,7 @@ void str_arr(int *arr) //print array
 {
     for(int i = 0; i<N-1; i++)
     {
-        printf((i < N-2) ? "%d," : "%d\n", (*arr+i));
+        printf((i < N-2) ? "%d," : "%d\n", *(arr+i));
     }
 }
 
