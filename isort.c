@@ -40,9 +40,9 @@ void shift_element(int *arr, int i)
 
 void str_arr(int *arr) //print array
 {
-    for(int i = 0; i<N-1; i++)
+    for(int i = 0; i<N; i++)
     {
-        printf((i < N-2) ? "%d," : "%d\n", *(arr+i));
+        printf((i < N-1) ? "%d," : "%d\n", *(arr+i));
     }
 }
 

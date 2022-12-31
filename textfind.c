@@ -60,6 +60,11 @@ int isSubStringWithStrikes(char *keyword, char *compare)
     int strikes = 0;
     int j = 0;
 
+    if(endWithNewLine(compare))
+    {
+        compareLen -= 1;
+    }
+
     if((compareLen > keywordLen+1) || (compareLen < keywordLen))
     {
         return 0;
@@ -89,7 +94,7 @@ int main ()
     int len;
     char* b = "b\n";
     char* a = "a\n";
-
+    
     while(fgets(strLine, LINE , stdin) != NULL)
     {   
         strcpy(copyLine, strLine);

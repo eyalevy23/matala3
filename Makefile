@@ -17,4 +17,4 @@ txtfind: textfind.c
 newt: clean all runt
 
 runt:
-	./textfind < find_inputa.txt
+	./textfind < find_inputb.txt > outb.txt
