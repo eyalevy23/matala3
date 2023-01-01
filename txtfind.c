@@ -41,7 +41,8 @@ int endWithNewLine(char *word){
     return 0;
 }
 
-int splitLine(char* line, char **array)
+//get line and split to array of strings
+int splitLine(char* line, char **array) 
 {
     int i = 0;
     char *p = strtok (line, " ");
@@ -53,6 +54,7 @@ int splitLine(char* line, char **array)
     return i;
 }
 
+//check if keywords is substring of the compare word so much of subtracting one letter
 int isSubStringWithStrikes(char *keyword, char *compare)
 {
     int keywordLen = strlen(keyword);
@@ -73,20 +75,18 @@ int isSubStringWithStrikes(char *keyword, char *compare)
     for(int i = 0; i < compareLen && strikes < 2; i++){
         if(compare[i] != keyword[j]){
             strikes++;
-        } else{
+        } else
+        {
             j++;
         }
-
     }
-    if(strikes > 1){
-        return 0;
-    } return 1;
+    return strikes <= 1; //if strikes in [0,1] return True
 }
 
 int main ()
 {
     char *array[8] = {0};
-    char leeter[WORD];
+    char letter[WORD];
     char keyword[WORD];
     int line = 1;
     char strLine[LINE];
@@ -95,24 +95,24 @@ int main ()
     char* b = "b\n";
     char* a = "a\n";
     
-    while(fgets(strLine, LINE , stdin) != NULL)
+    while(fgets(strLine, LINE , stdin) != NULL)//read input by line
     {   
-        strcpy(copyLine, strLine);
-        len = splitLine(strLine,array);
+        strcpy(copyLine, strLine); //copy line to string
+        len = splitLine(strLine,array); //split the input to array of string
 
-        if(line == 1){
+        if(line == 1){ //find the keyword and the user letter choice
             strcpy(keyword, array[0]);
-            strcpy(leeter, array[1]);
+            strcpy(letter, array[1]);
         }
 
-        if(strcmp(leeter, b) == 0 && line > 2){
+        if(strcmp(letter, b) == 0 && line > 2){ //case user choose b
             userChoice_B(array, keyword, len);
         }
 
-        if(strcmp(leeter, a) == 0 && line > 2){
+        if(strcmp(letter, a) == 0 && line > 2){//case user choose a
             userChoice_A(copyLine, keyword);
         }
-        bzero(strLine, sizeof(strLine));
+        bzero(strLine, sizeof(strLine));//reset the line
         line++;
         
     }    

@@ -20,17 +20,17 @@ void insertion_sort(int* arr , int len)
         }
         
         shiftCounter = i-j-1;
-        if(shiftCounter) //in case there is item that need to be shift
+        if(shiftCounter) //if shiftCounter == 0 don't shift 
         {
-            //call shift_element with starting point of arr[j+1]
+            //call shift_element with starting point of arr[j+1] 
             ptr = (arr + (j+1)); 
             shift_element(ptr, shiftCounter);
-            *(arr + (j+1)) = key;
+            *(arr + (j+1)) = key; 
         }
     }
 }
 
-void shift_element(int *arr, int i)
+void shift_element(int *arr, int i)//move element one step right from satrt to satart + i + 1
 {   
     for(int j = i; j > 0; j--)
     {   
@@ -46,7 +46,7 @@ void str_arr(int *arr) //print array
     }
 }
 
-void get_arr(int arr[N])
+void get_arr(int arr[N])//get input from user
 {
     for(int i =0; i<N; i++)
     {
