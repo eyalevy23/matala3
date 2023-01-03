@@ -3,7 +3,7 @@
 
 void shift_element(int *arr, int i);
 void insertion_sort(int* arr , int len);
-void str_arr(int *arr);
+void print_arr(int *arr);
 void get_arr(int arr[N]);
 
 void insertion_sort(int* arr , int len)
@@ -29,8 +29,8 @@ void insertion_sort(int* arr , int len)
         }
     }
 }
-
-void shift_element(int *arr, int i)//move element one step right from satrt to satart + i + 1
+//move element one step right from satrt to satart + i + 1
+void shift_element(int *arr, int i)
 {   
     for(int j = i; j > 0; j--)
     {   
@@ -38,7 +38,7 @@ void shift_element(int *arr, int i)//move element one step right from satrt to s
     }
 }
 
-void str_arr(int *arr) //print array
+void print_arr(int *arr)
 {
     for(int i = 0; i<N; i++)
     {
@@ -46,7 +46,7 @@ void str_arr(int *arr) //print array
     }
 }
 
-void get_arr(int arr[N])//get input from user
+void get_arr(int arr[N])//get array from user
 {
     for(int i =0; i<N; i++)
     {
@@ -59,6 +59,6 @@ int main()
     int arr[N];
     get_arr(arr); //input from user  
     insertion_sort(arr, N); //sort the array by insertionSort algorithm
-    str_arr(arr);//print array
+    print_arr(arr);
     return 0;
 }

@@ -11,10 +11,12 @@ void userChoice_B(char **array, char *keyword, int len);
 void userChoice_A(char line[], char *keyword);
 int endWithNewLine(char *word);
 
+
 void userChoice_B(char **array, char *keyword, int len)
 {
     for (int i = 0; i < len; i++)
     {
+        //check if the word is substring of the keyword with one strikes
         if(isSubStringWithStrikes(keyword, array[i]))
         {
             printf("%s", array[i]);
@@ -27,12 +29,14 @@ void userChoice_B(char **array, char *keyword, int len)
     
 }
 
+//print the line if the keyword is substring of the line
 void userChoice_A(char line[], char *keyword){
     if (strstr(line, keyword) != NULL){
         printf("%s", line);
     }
 }
 
+//check if the word end with new line
 int endWithNewLine(char *word){
     if (strcmp(word + strlen(word) - 1, "\n") == 0)
     {
@@ -62,16 +66,21 @@ int isSubStringWithStrikes(char *keyword, char *compare)
     int strikes = 0;
     int j = 0;
 
-    if(endWithNewLine(compare))
-    {
-        compareLen -= 1;
-    }
-
+    //check if the length of the compare word is in the range of the keyword
     if((compareLen > keywordLen+1) || (compareLen < keywordLen))
     {
         return 0;
     }
+    if(endWithNewLine(compare))
+    {
+        compareLen --;
+    }
+    if(compareLen == keywordLen)
+    {
+        strikes++;
+    }
 
+    //check if the compare word is substring of the keyword with one strikes
     for(int i = 0; i < compareLen && strikes < 2; i++){
         if(compare[i] != keyword[j]){
             strikes++;
@@ -85,7 +94,7 @@ int isSubStringWithStrikes(char *keyword, char *compare)
 
 int main ()
 {
-    char *array[8] = {0};
+    char *array[20] = {0};
     char letter[WORD];
     char keyword[WORD];
     int line = 1;
