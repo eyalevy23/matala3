@@ -67,13 +67,13 @@ int isSubStringWithStrikes(char *keyword, char *compare)
     int j = 0;
 
     //check if the length of the compare word is in the range of the keyword
-    if((compareLen > keywordLen+1) || (compareLen < keywordLen))
-    {
-        return 0;
-    }
     if(endWithNewLine(compare))
     {
         compareLen --;
+    }
+    if((compareLen > keywordLen+1) || (compareLen < keywordLen))
+    {
+        return 0;
     }
     if(compareLen == keywordLen)
     {
